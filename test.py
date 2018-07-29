@@ -13,7 +13,7 @@ class MyWXBot(WXBot):
             #self.send_file_msg_by_uid("img/1.png", msg['user']['id'])
 '''
     def schedule(self):
-        self.send_msg(u'å¼ ä¸‰', u'æµ‹è¯•')
+        self.send_msg(u'ÕÅÈı', u'²âÊÔ')
         time.sleep(1)
 '''
 

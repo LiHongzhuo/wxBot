@@ -36,7 +36,7 @@ class TulingWXBot(WXBot):
                 result = respond['url']
             elif respond['code'] == 302000:
                 for k in respond['list']:
-                    result = result + u"ã€" + k['source'] + u"ã€‘ " +\
+                    result = result + u"¡¾" + k['source'] + u"¡¿ " +\
                         k['article'] + "\t" + k['detailurl'] + "\n"
             else:
                 result = respond['text'].replace('<br>', '  ')
@@ -45,22 +45,22 @@ class TulingWXBot(WXBot):
             print '    ROBOT:', result
             return result
         else:
-            return u"çŸ¥é“å•¦"
+            return u"ÖªµÀÀ²"
 
     def auto_switch(self, msg):
         msg_data = msg['content']['data']
-        stop_cmd = [u'é€€ä¸‹', u'èµ°å¼€', u'å…³é—­', u'å…³æ‰', u'ä¼‘æ¯', u'æ»šå¼€']
-        start_cmd = [u'å‡ºæ¥', u'å¯åŠ¨', u'å·¥ä½œ']
+        stop_cmd = [u'ÍËÏÂ', u'×ß¿ª', u'¹Ø±Õ', u'¹Øµô', u'ĞİÏ¢', u'¹ö¿ª']
+        start_cmd = [u'³öÀ´', u'Æô¶¯', u'¹¤×÷']
         if self.robot_switch:
             for i in stop_cmd:
                 if i == msg_data:
                     self.robot_switch = False
-                    self.send_msg_by_uid(u'[Robot]' + u'æœºå™¨äººå·²å…³é—­ï¼', msg['to_user_id'])
+                    self.send_msg_by_uid(u'[Robot]' + u'»úÆ÷ÈËÒÑ¹Ø±Õ£¡', msg['to_user_id'])
         else:
             for i in start_cmd:
                 if i == msg_data:
                     self.robot_switch = True
-                    self.send_msg_by_uid(u'[Robot]' + u'æœºå™¨äººå·²å¼€å¯ï¼', msg['to_user_id'])
+                    self.send_msg_by_uid(u'[Robot]' + u'»úÆ÷ÈËÒÑ¿ªÆô£¡', msg['to_user_id'])
 
     def handle_msg_all(self, msg):
         if not self.robot_switch and msg['msg_type_id'] != 1:
@@ -92,7 +92,7 @@ class TulingWXBot(WXBot):
                     if msg['content']['type'] == 0:  # text message
                         reply += self.tuling_auto_reply(msg['content']['user']['id'], msg['content']['desc'])
                     else:
-                        reply += u"å¯¹ä¸èµ·ï¼Œåªè®¤å­—ï¼Œå…¶ä»–æ‚ä¸ƒæ‚å…«çš„æˆ‘éƒ½ä¸è®¤è¯†ï¼Œ,,Ô¾â€¸Ô¾,,"
+                        reply += u"¶Ô²»Æğ£¬Ö»ÈÏ×Ö£¬ÆäËûÔÓÆßÔÓ°ËµÄÎÒ¶¼²»ÈÏÊ¶£¬,,???,,"
                     self.send_msg_by_uid(reply, msg['user']['id'])
 
 
